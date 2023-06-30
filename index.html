@@ -10,6 +10,9 @@
             position: relative;
             font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
+        /**
+        mode light and dark
+         */
         .dark-mode {
             background: #292836 repeating-linear-gradient(45deg, #1f1d29, #1f1d29 1px, transparent 0px, transparent 14px) left top;
             color: rgba(255,255,255,.5)!important;
@@ -19,6 +22,9 @@
             color: black;
         }
 
+        /**
+        animation change
+         */
         .during-change-mode {
             color: transparent;
             filter: blur(3px);
@@ -30,9 +36,9 @@
             transition: all .3s linear;
         }
 
-        .container {
-            display: flex; /* or inline-flex */
-        }
+        /**
+        header
+         */
         header {
             padding: 5px 20px;
             top: 20px;
@@ -71,6 +77,11 @@
             background-color: #2dce81;
             border-radius: 10px;
         }
+
+        /**
+        lamp line for switch mode
+         */
+
         .LampSwitchMode {
             width: 40px;
             height: 80vh;
@@ -120,6 +131,10 @@
             background: #1f1d2995;
         }
 
+        /**
+        Section
+         */
+
         section {
             position: relative;
             padding: 20px 60px;
@@ -162,6 +177,86 @@
             border-radius: 10px;
             border: #1f1d2925 3px solid;
         }
+
+        /**
+        nav of section
+         */
+
+        .nav-section {
+            position: fixed;
+            left: 0;
+            top: -10%; /* only show when scroll down */
+            width: 100%;
+            background: #2E405390;
+            transition: top 0.4s;
+            height: 5%;
+            z-index: 1;
+            border-bottom: #4bce69 2px solid;
+        }
+        .left-title {
+            position: absolute;
+            left: 9%;
+            top: 4px;
+        }
+        .nav-section > .left-title > h2 {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #dddddd;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        .nav-section > .left-title > label {
+            font-weight: bold;
+            font-size: 0.6em;
+            color: #fafbf8;
+        }
+        .right-title {
+            position: absolute;
+            right: 19%;
+            top: 4px;
+        }
+        .nav-section > .right-title > h2 {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #dddddd;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        .nav-section > .right-title > label {
+            font-weight: bold;
+            font-size: 0.6em;
+            color: #fafbf8;
+        }
+
+        /**
+        footer
+         */
+        footer {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 54px 0px;
+        }
+        .content-footer {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+        .content-footer > p {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 150%;
+            color: rgb(17, 25, 40);
+        }
+        .copyright-footer {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            text-align: center;
+            color: rgb(107, 114, 128);
+        }
     </style>
 </head>
 <body class="light-mode">
@@ -188,54 +283,6 @@
         </div>
     </div>
 </header>
-<style>
-    .nav-section {
-        position: fixed;
-        left: 0;
-        top: -10%; /* only show when scroll down */
-        width: 100%;
-        background: #2E405390;
-        transition: top 0.4s;
-        height: 5%;
-        z-index: 1;
-        border-bottom: #4bce69 2px solid;
-    }
-    .left-title {
-        position: absolute;
-        left: 9%;
-        top: 4px;
-    }
-    .nav-section > .left-title > h2 {
-        font-weight: bold;
-        font-size: 1.1em;
-        color: #dddddd;
-        margin-block-start: 0;
-        margin-block-end: 0;
-    }
-    .nav-section > .left-title > label {
-        font-weight: bold;
-        font-size: 0.6em;
-        color: #fafbf8;
-    }
-    .right-title {
-        position: absolute;
-        right: 19%;
-        top: 4px;
-    }
-    .nav-section > .right-title > h2 {
-        font-weight: bold;
-        font-size: 1.1em;
-        color: #dddddd;
-        margin-block-start: 0;
-        margin-block-end: 0;
-    }
-    .nav-section > .right-title > label {
-        font-weight: bold;
-        font-size: 0.6em;
-        color: #fafbf8;
-    }
-
-</style>
 <section>
     <div class="nav-section" id="nav-section">
         <div class="left-title">
@@ -426,13 +473,19 @@
     </p>
 </section>
 <footer>
-
+    <div class="content-footer">
+        <img width="80px" src="https://f-code.tech/static/media/f-code.cebaeec25ba71c27c75475c3be744374.svg" alt="F-Code" class="sc-hBxehG daZfIl">
+        <p>F-Code Information Portal</p>
+    </div>
+    <div class="copyright-footer">
+        <p>© 2022 <strong>F-Code</strong>. All rights reserved </p>
+    </div>
 </footer>
 <script>
     let prevScrollpos = window.pageYOffset || document.documentElement.scrollTop;
     window.onscroll = function() {
         let currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScrollPos === 0) {
+        if (currentScrollPos < 150) {
             document.getElementById("navbar").style.top = "10px";
             document.getElementById("nav-section").style.top = "-10%";
             document.getElementById('switcher-mode').style.top = "-10vh";
